@@ -1,7 +1,6 @@
 import weather.OpenWeatherMap;
 import wikipedia.MediaWiki;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.io.IOException;
 import java.net.URL;
 
@@ -11,6 +10,7 @@ public class City {
     private OpenWeatherMap weatherInfo;
     private String name;
     private double[] featuresVector = new double[10];
+    static final String appId = "a434c79e93cfeee860190e0489ff6715";
 
     //constructors
     public City(String name) throws IOException {
@@ -28,8 +28,8 @@ public class City {
         this.name = name;
     }
 
-    public double[] getFeaturesVector(String appId) throws IOException {
-        calculateFeatureVector(appId);
+    public double[] getFeaturesVector() throws IOException {
+        calculateFeatureVector();
         return featuresVector;
     }
 
@@ -39,6 +39,26 @@ public class City {
 
     private double retrieveTemperature() {
         return weatherInfo.getMain().getTemp();
+    }
+
+    public void setWikiInfo() throws IOException {
+        String cleanedName = this.name.replace(' ', '+');
+        this.wikiInfo = new ObjectMapper().readValue(
+                new URL("https://en.wikipedia.org/w/api.php?action=query&prop=extracts&titles=" + cleanedName + "&format=json&formatversion=2"), MediaWiki.class);
+    }
+
+    public MediaWiki getWikiInfo(){
+        return this.wikiInfo;
+    }
+
+    public void setWeatherInfo() throws IOException {
+        String cleanedName = this.name.replace(' ', '+');
+        this.weatherInfo = new ObjectMapper().readValue(
+                new URL("http://api.openweathermap.org/data/2.5/weather?q=" + cleanedName + "&APPID=" + appId + ""), OpenWeatherMap.class);
+    }
+
+    public OpenWeatherMap getWeatherInfo(){
+        return this.weatherInfo;
     }
 
     private static int getTermCount(String cityArticle, String criterion) {
@@ -76,33 +96,27 @@ public class City {
         return distance / 15326.480138034301; // Distance between Athens and Sydney
     }
 
-    private void calculateFeatureVector(String appId) throws IOException {
-        String cleanedName = this.name.replace(' ', '+');
-        this.wikiInfo = new ObjectMapper().readValue(
-                new URL("https://en.wikipedia.org/w/api.php?action=query&prop=extracts&titles=" +
-                        cleanedName + "&format=json&formatversion=2"), MediaWiki.class);
-        this.weatherInfo = new ObjectMapper().readValue(
-                new URL("http://api.openweathermap.org/data/2.5/weather?q=" +
-                        cleanedName + "&APPID=" + appId + ""), OpenWeatherMap.class);
+    private void calculateFeatureVector() throws IOException {
+        setWikiInfo();
+        setWeatherInfo();
         this.featuresVector[0] = normalizeTerm(
-                getTermCount(wikiInfo.getQuery().getPages().get(0).getExtract(), "cafe"));
+                getTermCount(getWikiInfo().getQuery().getPages().get(0).getExtract(), "cafe"));
         this.featuresVector[1] = normalizeTerm(
-                getTermCount(wikiInfo.getQuery().getPages().get(0).getExtract(), "sea"));
+                getTermCount(getWikiInfo().getQuery().getPages().get(0).getExtract(), "sea"));
         this.featuresVector[2] = normalizeTerm(
-                getTermCount(wikiInfo.getQuery().getPages().get(0).getExtract(), "museum"));
+                getTermCount(getWikiInfo().getQuery().getPages().get(0).getExtract(), "museum"));
         this.featuresVector[3] = normalizeTerm(
-                getTermCount(wikiInfo.getQuery().getPages().get(0).getExtract(), "restaurant"));
+                getTermCount(getWikiInfo().getQuery().getPages().get(0).getExtract(), "restaurant"));
         this.featuresVector[4] = normalizeTerm(
-                getTermCount(wikiInfo.getQuery().getPages().get(0).getExtract(), "stadium"));
+                getTermCount(getWikiInfo().getQuery().getPages().get(0).getExtract(), "stadium"));
         this.featuresVector[5] = normalizeTerm(
-                getTermCount(wikiInfo.getQuery().getPages().get(0).getExtract(), "park"));
+                getTermCount(getWikiInfo().getQuery().getPages().get(0).getExtract(), "park"));
         this.featuresVector[6] = normalizeTerm(
-                getTermCount(wikiInfo.getQuery().getPages().get(0).getExtract(), "gallery"));
+                getTermCount(getWikiInfo().getQuery().getPages().get(0).getExtract(), "gallery"));
         this.featuresVector[7] = normalizeTemperature(retrieveTemperature());
         this.featuresVector[8] = normalizeCloudsValue(retrieveClouds());
         this.featuresVector[9] = normalizeDistance(geodesicDistance(
-                weatherInfo.getCoord().getLat(), 37.9795,
-                weatherInfo.getCoord().getLon(), 23.7162
+                getWeatherInfo().getCoord().getLat(), 37.9795, getWeatherInfo().getCoord().getLon(), 23.7162
         )); // Hard coded coords represent the coords of Athens
     }
 }
