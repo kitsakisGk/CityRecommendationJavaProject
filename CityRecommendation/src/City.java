@@ -1,8 +1,11 @@
 import weather.OpenWeatherMap;
 import wikipedia.MediaWiki;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class City {
 
@@ -11,12 +14,27 @@ public class City {
     private String name;
     private double[] featuresVector = new double[10];
     static final String appId = "a434c79e93cfeee860190e0489ff6715";
+    private static final SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+    private String timestamp;
 
     //constructors
+
+    public City(){
+
+    }
+
     public City(String name) throws IOException {
         this.name = name;
         this.wikiInfo = null;
         this.weatherInfo = null;
+    }
+
+    public City(String name, MediaWiki wikiInfo, OpenWeatherMap weatherInfo, double[] featuresVector, String timestamp){
+        this.name = name;
+        this.wikiInfo = wikiInfo;
+        this.weatherInfo = weatherInfo;
+        this.featuresVector = featuresVector;
+        this.timestamp = timestamp;
     }
 
     //setters getters
@@ -39,6 +57,10 @@ public class City {
 
     private double retrieveTemperature() {
         return weatherInfo.getMain().getTemp();
+    }
+
+    public String getTimestamp() {
+        return timestamp;
     }
 
     public void setWikiInfo() throws IOException {
@@ -77,7 +99,7 @@ public class City {
         if (termCount > 10) {
             termCount = 10;
         }
-        return termCount / 10;
+        return termCount / 10.0;
     }
 
     private double normalizeTemperature(double temperature) {
@@ -97,26 +119,31 @@ public class City {
     }
 
     private void calculateFeatureVector() throws IOException {
-        setWikiInfo();
-        setWeatherInfo();
-        this.featuresVector[0] = normalizeTerm(
-                getTermCount(getWikiInfo().getQuery().getPages().get(0).getExtract(), "cafe"));
-        this.featuresVector[1] = normalizeTerm(
-                getTermCount(getWikiInfo().getQuery().getPages().get(0).getExtract(), "sea"));
-        this.featuresVector[2] = normalizeTerm(
-                getTermCount(getWikiInfo().getQuery().getPages().get(0).getExtract(), "museum"));
-        this.featuresVector[3] = normalizeTerm(
-                getTermCount(getWikiInfo().getQuery().getPages().get(0).getExtract(), "restaurant"));
-        this.featuresVector[4] = normalizeTerm(
-                getTermCount(getWikiInfo().getQuery().getPages().get(0).getExtract(), "stadium"));
-        this.featuresVector[5] = normalizeTerm(
-                getTermCount(getWikiInfo().getQuery().getPages().get(0).getExtract(), "park"));
-        this.featuresVector[6] = normalizeTerm(
-                getTermCount(getWikiInfo().getQuery().getPages().get(0).getExtract(), "gallery"));
-        this.featuresVector[7] = normalizeTemperature(retrieveTemperature());
-        this.featuresVector[8] = normalizeCloudsValue(retrieveClouds());
-        this.featuresVector[9] = normalizeDistance(geodesicDistance(
-                getWeatherInfo().getCoord().getLat(), 37.9795, getWeatherInfo().getCoord().getLon(), 23.7162
-        )); // Hard coded coords represent the coords of Athens
+        if (this.featuresVector == null) {
+            this.featuresVector = new double[10];
+            setWikiInfo();
+            setWeatherInfo();
+            Date date = new Date();
+            this.timestamp = formatter.format(date);
+            this.featuresVector[0] = normalizeTerm(
+                    getTermCount(getWikiInfo().getQuery().getPages().get(0).getExtract(), "cafe"));
+            this.featuresVector[1] = normalizeTerm(
+                    getTermCount(getWikiInfo().getQuery().getPages().get(0).getExtract(), "sea"));
+            this.featuresVector[2] = normalizeTerm(
+                    getTermCount(getWikiInfo().getQuery().getPages().get(0).getExtract(), "museum"));
+            this.featuresVector[3] = normalizeTerm(
+                    getTermCount(getWikiInfo().getQuery().getPages().get(0).getExtract(), "restaurant"));
+            this.featuresVector[4] = normalizeTerm(
+                    getTermCount(getWikiInfo().getQuery().getPages().get(0).getExtract(), "stadium"));
+            this.featuresVector[5] = normalizeTerm(
+                    getTermCount(getWikiInfo().getQuery().getPages().get(0).getExtract(), "park"));
+            this.featuresVector[6] = normalizeTerm(
+                    getTermCount(getWikiInfo().getQuery().getPages().get(0).getExtract(), "gallery"));
+            this.featuresVector[7] = normalizeTemperature(retrieveTemperature());
+            this.featuresVector[8] = normalizeCloudsValue(retrieveClouds());
+            this.featuresVector[9] = normalizeDistance(geodesicDistance(
+                    getWeatherInfo().getCoord().getLat(), 37.9795, getWeatherInfo().getCoord().getLon(), 23.7162
+            )); // Hard coded coords represent the coords of Athens
+        }
     }
 }
