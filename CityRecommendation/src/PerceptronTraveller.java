@@ -4,20 +4,38 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+/**
+ * A class that makes the suggestion
+ * for the travellers
+ */
+
 public interface PerceptronTraveller {
+    /**
+     * @param citiesMap
+     * @return arrayList
+     * @throws IOException
+     */
     ArrayList<String> recommend(HashMap<String,City> citiesMap) throws IOException;
 }
 
 abstract class PerceptronTravellerBase implements PerceptronTraveller{
+    /**
+     * @param name
+     * @param age
+     * @param weightsBias : a number between [-1,1]
+     */
+
     private final String name;
     private final int age;
     double[] weightsBias;
 
+    //constructor
     public PerceptronTravellerBase(String name, int age){
         this.name = name;
         this.age = age;
     }
 
+    //setters getters
     public String getName() {
         return name;
     }
@@ -32,6 +50,10 @@ abstract class PerceptronTravellerBase implements PerceptronTraveller{
     }
 
     public ArrayList<String> recommend(HashMap<String, City> citiesMap, boolean toUpperCase) throws IOException {
+        /**
+         * @return recommended cities
+         * either to UpperCase or LowerCase
+         */
         ArrayList<String> recommendedCities = getCityRecommendations(citiesMap);
         if (toUpperCase == true) {
             for (int i=0; i<recommendedCities.size(); i++) {
@@ -53,6 +75,7 @@ abstract class PerceptronTravellerBase implements PerceptronTraveller{
     }
 
     private int calcHeavisideStep(double[] featuresVector) {
+        //heaviside step implementation
         if (calculateSum(featuresVector)>0) {
             return 1;
         } else {
@@ -61,6 +84,7 @@ abstract class PerceptronTravellerBase implements PerceptronTraveller{
     }
 
     private ArrayList<String> getCityRecommendations(HashMap<String, City> citiesMap) throws IOException {
+        // map collection for objects Cities
         ArrayList<String> recommendedCities = new ArrayList<String>();
         for (Map.Entry<String, City> entry : citiesMap.entrySet()) {
             String cityName = entry.getKey();

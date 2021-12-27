@@ -7,7 +7,24 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * This class has all the information
+ * about one city. A traveller will
+ * just pick some features.
+ */
+
 public class City {
+
+    /**
+     *       Cities parameters
+     * @param wikiInfo : wiki data
+     * @param weatherInfo : weather data
+     * @param name : City name
+     * @param featuresVector : array with cities terms
+     * @param appId : key from openWeather site
+     * @param formatter : date formatter for the timestamp
+     * @param timestamp : timestamp
+     */
 
     private MediaWiki wikiInfo;
     private OpenWeatherMap weatherInfo;
@@ -18,7 +35,6 @@ public class City {
     private String timestamp;
 
     //constructors
-
     public City(){
 
     }
@@ -27,6 +43,7 @@ public class City {
         this.name = name;
         this.wikiInfo = null;
         this.weatherInfo = null;
+        calculateFeatureVector();
     }
 
     public City(String name, MediaWiki wikiInfo, OpenWeatherMap weatherInfo, double[] featuresVector, String timestamp){
@@ -103,14 +120,25 @@ public class City {
     }
 
     private double normalizeTemperature(double temperature) {
+        /**
+         * @return normalized temperature from min-max scaler
+         * as it said
+         */
         return (temperature - 184) / (331-184);
     }
 
     private double normalizeCloudsValue(int cloudsValue) {
+        /**
+         * @return percentage of clouds
+         */
         return (double) cloudsValue / 100;
     }
 
     public static double geodesicDistance(double lat1, double lat2, double lon1, double lon2) {
+        /**
+         * @return geodesic distance based on
+         * latitude and longitude from GeoDataSource
+         */
         return(DistanceCalculator.distance(lat1, lon1, lat2, lon2, "K"));
     }
 
@@ -119,6 +147,10 @@ public class City {
     }
 
     private void calculateFeatureVector() throws IOException {
+        /**
+         * taking the terms that we want for the city and
+         * setting them to one city
+         */
         if (this.featuresVector == null) {
             this.featuresVector = new double[10];
             setWikiInfo();
