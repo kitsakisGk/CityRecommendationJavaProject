@@ -79,6 +79,22 @@ public class Main {
 //        System.out.println(recommendationsMid);
 //        System.out.println(recommendationsElder);
 
+
+        //TODO: https://www.twilio.com/blog/working-with-environment-variables-in-java
+        /**
+         * with this link make in windows the environment variable and then just comment out
+         *  the code down below.
+          */
+//        System.out.println("Read Specific Environment Variable");
+//        System.out.println("appId Value:- " + System.getenv(City.appId));
+//
+//        System.out.println("\nRead All Variables:-\n");
+//
+//        Map <String, String> map = System.getenv();
+//        for (Map.Entry <String, String> entry: map.entrySet()) {
+//            System.out.println("Variable Name:- " + entry.getKey() + " Value:- " + entry.getValue());
+//        }
+
         cc.storeCollection();
         System.out.printf("Done");
     }
