@@ -65,15 +65,20 @@ public class CityCollector {
         return (HashMap<String, City>) citiesMap;
     }
 
-    public City addCity(String cityNameToAdd) throws IOException {
+    public List<Object> addCity(String cityNameToAdd) throws IOException {
+        List<Object> cityInfo = new ArrayList<>();
         // Use this to add a new city to the collection
+        // to return if city is new
         if (this.cityCollection.get(cityNameToAdd) == null) {
             City newCity = new City(cityNameToAdd);
             this.cityCollection.put(cityNameToAdd, newCity);
-            return newCity;
+            cityInfo.add(newCity);
+            cityInfo.add(true);
         } else {
-            return this.cityCollection.get(cityNameToAdd);
+            cityInfo.add(this.cityCollection.get(cityNameToAdd));
+            cityInfo.add(false);
         }
+        return cityInfo;
     }
 
 
