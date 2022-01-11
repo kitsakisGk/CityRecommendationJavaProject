@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.net.URL;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -14,7 +15,6 @@ import java.util.Date;
  */
 
 public class City {
-
     /**
      *       Cities parameters
      * @param wikiInfo : wiki data
@@ -29,15 +29,13 @@ public class City {
     private MediaWiki wikiInfo;
     private OpenWeatherMap weatherInfo;
     private String name;
-    private double[] featuresVector = new double[10];
-    static final String appId = "a434c79e93cfeee860190e0489ff6715";
+    private double[] featuresVector;
+    static final String appId = "6da8096b82c38e87ffff9717fa59e36b";
     private static final SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     private String timestamp;
 
     //constructors
-    public City(){
-
-    }
+    public City(){}
 
     public City(String name) throws IOException {
         this.name = name;
@@ -55,6 +53,10 @@ public class City {
     }
 
     //setters getters
+    public String getTimestamp() {
+        return timestamp;
+    }
+
     public String getName() {
         return name;
     }
@@ -76,15 +78,12 @@ public class City {
         return weatherInfo.getMain().getTemp();
     }
 
-    public String getTimestamp() {
-        return timestamp;
-    }
-
     public void setWikiInfo() throws IOException {
         String cleanedName = this.name.replace(' ', '+');
         this.wikiInfo = new ObjectMapper().readValue(
-                new URL("https://en.wikipedia.org/w/api.php?action=query&prop=extracts&titles=" + cleanedName + "&format=json&formatversion=2"), MediaWiki.class);
-    }
+                new URL("https://en.wikipedia.org/w/api.php?action=query&prop=extracts&titles=" +
+                        cleanedName + "&format=json&formatversion=2"), MediaWiki.class);
+    };
 
     public MediaWiki getWikiInfo(){
         return this.wikiInfo;
@@ -93,7 +92,8 @@ public class City {
     public void setWeatherInfo() throws IOException {
         String cleanedName = this.name.replace(' ', '+');
         this.weatherInfo = new ObjectMapper().readValue(
-                new URL("http://api.openweathermap.org/data/2.5/weather?q=" + cleanedName + "&APPID=" + appId + ""), OpenWeatherMap.class);
+                new URL("http://api.openweathermap.org/data/2.5/weather?q=" +
+                        cleanedName + "&APPID=" + appId + ""), OpenWeatherMap.class);
     }
 
     public OpenWeatherMap getWeatherInfo(){
