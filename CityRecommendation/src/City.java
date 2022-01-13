@@ -8,11 +8,9 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * This class has all the information
- * about one city. A traveller will
- * just pick some features.
- */
+
+// This class has all the information about one city.
+// A traveller will just pick some features.
 
 public class City {
     /**
@@ -33,6 +31,7 @@ public class City {
     static final String appId = "6da8096b82c38e87ffff9717fa59e36b";
     private static final SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     private String timestamp;
+    private double normalizedGeodesicDistance;
 
     //constructors
     public City(){}
@@ -50,6 +49,7 @@ public class City {
         this.weatherInfo = weatherInfo;
         this.featuresVector = featuresVector;
         this.timestamp = timestamp;
+        this.normalizedGeodesicDistance = this.featuresVector[9];
     }
 
     //setters getters
@@ -68,6 +68,10 @@ public class City {
     public double[] getFeaturesVector() throws IOException {
         calculateFeatureVector();
         return featuresVector;
+    }
+
+    public double getNormalizedGeodesicDistance() {
+        return normalizedGeodesicDistance;
     }
 
     private int retrieveClouds() {
@@ -120,25 +124,17 @@ public class City {
     }
 
     private double normalizeTemperature(double temperature) {
-        /**
-         * @return normalized temperature from min-max scaler
-         * as it said
-         */
+         // normalized temperature from min-max scaler
         return (temperature - 184) / (331-184);
     }
 
     private double normalizeCloudsValue(int cloudsValue) {
-        /**
-         * @return percentage of clouds
-         */
+        // percentage of clouds
         return (double) cloudsValue / 100;
     }
 
     public static double geodesicDistance(double lat1, double lat2, double lon1, double lon2) {
-        /**
-         * @return geodesic distance based on
-         * latitude and longitude from GeoDataSource
-         */
+         // geodesic distance based on latitude and longitude from GeoDataSource
         return(DistanceCalculator.distance(lat1, lon1, lat2, lon2, "K"));
     }
 
@@ -147,10 +143,9 @@ public class City {
     }
 
     private void calculateFeatureVector() throws IOException {
-        /**
-         * taking the terms that we want for the city and
-         * setting them to one city
-         */
+         //taking the terms that we want for the city and
+         //setting them to one city
+
         if (this.featuresVector == null) {
             this.featuresVector = new double[10];
             setWikiInfo();
@@ -176,6 +171,7 @@ public class City {
             this.featuresVector[9] = normalizeDistance(geodesicDistance(
                     getWeatherInfo().getCoord().getLat(), 37.9795, getWeatherInfo().getCoord().getLon(), 23.7162
             )); // Hard coded coords represent the coords of Athens
+            this.normalizedGeodesicDistance = this.featuresVector[9];
         }
     }
 }
