@@ -132,7 +132,9 @@ public class Main {
                 }
                 try {
                     ArrayList<String> recommendedCities = pt.recommend(cc.getCityCollection());
-                    System.out.println(recommendedCities);
+                    ArrayList<String> sortedCities = pt.sortRecommendations(recommendedCities, cc.getCityCollection());
+                    System.out.println(sortedCities);
+//                    System.out.println(recommendedCities);
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
@@ -277,6 +279,8 @@ public class Main {
         f.setLayout(null);
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        //cc.storeCollection();
 
 
         // Convert list of cities to hashmap for quick membership checks
