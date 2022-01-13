@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//holds the cities and the values
 public class CityCollector {
     private HashMap<String, City> cityCollection;
     private static String currentDir;

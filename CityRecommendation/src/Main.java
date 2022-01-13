@@ -10,16 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
 
-/**
- * <h1>Main</h1>
- * The main class runs the environment
- * that you can get a preferable city.
- *
- * @author Kitsaros
- * @version 1.0
- * @since 2021-12-10
- */
-
+//main class
+//runs GUI environment
 public class Main {
 
     static CityCollector cc = new CityCollector();
@@ -41,7 +33,7 @@ public class Main {
 
         //Welcome label
         JLabel welcomeLabel = new JLabel("CITY RECOMMENDATIONS");
-        welcomeLabel.setBounds(400, 30, 400, 50);
+        welcomeLabel.setBounds(380, 30, 400, 50);
         welcomeLabel.setFont(new Font("Verdana", Font.BOLD, 26));
         welcomeLabel.setForeground(new Color(60,100,250));
         f.add(welcomeLabel);
@@ -50,6 +42,7 @@ public class Main {
         JTextField tf = new JTextField();
         tf.setBounds(30,100, 200,30);
         f.add(tf);
+
 
         // Displays the results of adding a new City
         JLabel cityInfoLabel = new JLabel();
@@ -74,8 +67,10 @@ public class Main {
                     Boolean isNew = (Boolean) addedCityInfo.get(1);
                     if (isNew){
                         cityInfoLabel.setText("City " + addedCity.getName() + " added.");
+                        //tf.setText(null);
                     } else {
                         cityInfoLabel.setText("City has already been added at: " + addedCity.getTimestamp());
+                        //tf.setText(null);
                     }
                 } catch (IOException ex) {
                     ex.printStackTrace();

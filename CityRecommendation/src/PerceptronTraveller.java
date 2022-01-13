@@ -4,26 +4,13 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-/**
- * A class that makes the suggestion
- * for the travellers
- */
+//A class that makes the suggestion for the travellers
 
 public interface PerceptronTraveller {
-    /**
-     * @param citiesMap
-     * @return arrayList
-     * @throws IOException
-     */
     ArrayList<String> recommend(HashMap<String,City> citiesMap) throws IOException;
 }
 
 abstract class PerceptronTravellerBase implements PerceptronTraveller{
-    /**
-     * @param name
-     * @param age
-     * @param weightsBias : a number between [-1,1]
-     */
 
     private final String name;
     private final int age;
@@ -50,10 +37,7 @@ abstract class PerceptronTravellerBase implements PerceptronTraveller{
     }
 
     public ArrayList<String> recommend(HashMap<String, City> citiesMap, boolean toUpperCase) throws IOException {
-        /**
-         * @return recommended cities
-         * either to UpperCase or LowerCase
-         */
+        //recommended cities either to UpperCase or LowerCase
         ArrayList<String> recommendedCities = getCityRecommendations(citiesMap);
         if (toUpperCase == true) {
             for (int i=0; i<recommendedCities.size(); i++) {
