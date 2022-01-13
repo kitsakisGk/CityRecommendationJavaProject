@@ -1,8 +1,5 @@
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
 //A class that makes the suggestion for the travellers
 
@@ -48,6 +45,8 @@ abstract class PerceptronTravellerBase implements PerceptronTraveller{
         return recommendedCities;
     }
 
+    //sorted cities according the bord on second deliverable
+    abstract ArrayList<String> sortRecommendations(ArrayList<String> recommendedCities, HashMap<String, City> cityCollection);
 
     private double calculateSum(double[] featuresVector) {
         // default method implementation
