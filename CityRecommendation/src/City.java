@@ -84,7 +84,7 @@ public class City {
         this.wikiInfo = new ObjectMapper().readValue(
                 new URL("https://en.wikipedia.org/w/api.php?action=query&prop=extracts&titles=" +
                         cleanedName + "&format=json&formatversion=2"), MediaWiki.class);
-    };
+    }
 
     public MediaWiki getWikiInfo(){
         return this.wikiInfo;
