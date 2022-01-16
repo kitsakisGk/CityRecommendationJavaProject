@@ -10,7 +10,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-//holds the cities and the values
+/**
+ * holds the cities and the values
+ * and when we call her in main it will give us the cities in json if we have stored them
+ */
+
 public class CityCollector {
     private HashMap<String, City> cityCollection;
     private static String currentDir;
@@ -22,7 +26,6 @@ public class CityCollector {
             e.printStackTrace();
         }
     }
-
     private static File citiesJson = new File(String.valueOf(Paths.get(currentDir, "cities.json")));
 
     public CityCollector(){
