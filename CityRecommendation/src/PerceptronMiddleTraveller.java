@@ -6,12 +6,13 @@ class PerceptronMiddleTraveller extends PerceptronTravellerBase{
 
     public PerceptronMiddleTraveller(String name, int age) {
         super(name, age);
-        this.weightsBias = new double[] {0.4, 0.5, -0.1, 0.3, -0.5, 0.7, 0.6, -0.7, 0, -0.8};//just a suggestion for now
+        this.weightsBias = new double[] {0.4, 0.5, -0.1, 0.3, -0.5, 0.7, 0.6, -0.7, 0, -0.8};
     }
 
-    public ArrayList<String> sortRecommendations(
-            ArrayList<String> recommendedCities, HashMap<String, City> cityCollection
-    ) {
+    public ArrayList<String> sortRecommendations(ArrayList<String> recommendedCities, HashMap<String, City> cityCollection) {
+        /*
+         * @return an arraylist with sorted cities in increasing timestamp
+         */
         ArrayList<City> recommendedCityObj = new ArrayList<City>();
         for (int i=0; i<recommendedCities.size(); i++) {
             recommendedCityObj.add(cityCollection.get(recommendedCities.get(i)));
