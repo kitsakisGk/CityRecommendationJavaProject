@@ -8,15 +8,39 @@ import java.awt.event.WindowEvent;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 import javax.swing.*;
 
-//main class
-//runs GUI environment
+/**
+ * The main class runs the environment
+ * that you can get a preferable city.
+ *
+ * @author Kitsaros
+ * @since 2021-12-10
+ */
 public class Main {
 
     static CityCollector cc = new CityCollector();
+    static Logger logger = Logger.getLogger("CityRecommendationsApp");
+    static FileHandler fh;
 
     public static void main(String[] args) throws Exception {
+
+        try {
+
+            // This block configure the logger with handler and formatter
+            fh = new FileHandler("D:/repositories/JavaProjectCityRecommendation");
+            logger.addHandler(fh);
+            SimpleFormatter formatter = new SimpleFormatter();
+            fh.setFormatter(formatter);
+
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         JFrame f = new JFrame("City Recommendations");
         f.addWindowListener(new WindowAdapter(){
@@ -25,6 +49,7 @@ public class Main {
                 System.out.println("closing window");
                 try {
                     cc.storeCollection();
+                    logger.info("Storing city collection to json file.");
                 } catch (JsonProcessingException ex) {
                     ex.printStackTrace();
                 }
@@ -117,30 +142,10 @@ public class Main {
         recommend.setVisible(true);
         f.add(recommend);
 
-        recommend.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                String travellerName = travellerNameInput.getText();
-                String travellerAgeText = travellerAgeInput.getText();
-                int travellerAge = Integer.parseInt(travellerAgeText);
-                PerceptronTravellerBase pt;
-                if (travellerAge >= 16 && travellerAge < 25) {
-                    pt = new PerceptronYoungTraveller(travellerName, travellerAge);
-                } else if (travellerAge >= 25 && travellerAge < 60) {
-                    pt = new PerceptronMiddleTraveller(travellerName, travellerAge);
-                } else {
-                    pt = new PerceptronElderTraveller(travellerName, travellerAge);
-                }
-                try {
-                    ArrayList<String> recommendedCities = pt.recommend(cc.getCityCollection());
-                    ArrayList<String> sortedCities = pt.sortRecommendations(recommendedCities, cc.getCityCollection());
-                    System.out.println(sortedCities);
-//                    System.out.println(recommendedCities);
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-                System.out.println(travellerAge);
-            }
-        });
+        // City input
+        JTextField jt = new JTextField();
+        jt.setBounds(30,100, 200,30);
+        f.add(jt);
 
         //add features selections via Spinners
         //left side
@@ -269,6 +274,57 @@ public class Main {
         geoDistLabel.setVisible(true);
         f.add(geoDistLabel);
 
+        // Checkbox to use custom features
+        JCheckBox useCustomFeatures = new JCheckBox("Use custom preferences");
+        useCustomFeatures.setBounds(730, 450, 300, 30);
+//        useCustomFeatures.setBackground(new Color(7, 16, 30));
+        useCustomFeatures.setForeground(new Color(250,250,250));
+        useCustomFeatures.setOpaque(false);
+        f.add(useCustomFeatures);
+
+        recommend.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                String travellerName = travellerNameInput.getText();
+                String travellerAgeText = travellerAgeInput.getText();
+                int travellerAge = Integer.parseInt(travellerAgeText);
+                PerceptronTravellerBase pt;
+                if (travellerAge >= 16 && travellerAge < 25) {
+                    pt = new PerceptronYoungTraveller(travellerName, travellerAge);
+                } else if (travellerAge >= 25 && travellerAge < 60) {
+                    pt = new PerceptronMiddleTraveller(travellerName, travellerAge);
+                } else {
+                    pt = new PerceptronElderTraveller(travellerName, travellerAge);
+                }
+                try {
+                    ArrayList<String> recommendedCities;
+                    if (useCustomFeatures.isSelected()) {
+                        System.out.println("Checkbox is checked");
+                        Double cafeValue = (Double) cafe.getValue();
+                        Double seaValue = (Double) sea.getValue();
+                        Double museumValue = (Double) museum.getValue();
+                        Double restaurantValue = (Double) restaurant.getValue();
+                        Double stadiumValue = (Double) stadium.getValue();
+                        Double parkValue = (Double) park.getValue();
+                        Double galleryValue = (Double) gallery.getValue();
+                        Double[] customFeatures = {
+                                cafeValue, seaValue, museumValue, restaurantValue,
+                                stadiumValue, parkValue, galleryValue
+                        };
+                        recommendedCities = pt.personalizedRecommend(cc.getCityCollection(), customFeatures);
+//                        System.out.println(Arrays.toString(customFeatures));
+                    } else {
+                        recommendedCities = pt.recommend(cc.getCityCollection());
+//                        System.out.println(sortedCities);
+                    }
+                    ArrayList<String> sortedCities = pt.sortRecommendations(recommendedCities, cc.getCityCollection());
+                    jt.setText("Our recommendations for " + travellerName + " are: " + String.valueOf(sortedCities));
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                System.out.println(travellerAge);
+            }
+        });
+
         //GUI window info
         f.setSize(1100, 700);
         //image background
@@ -279,33 +335,5 @@ public class Main {
         f.setLayout(null);
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        //cc.storeCollection();
-
-
-        // Convert list of cities to hashmap for quick membership checks
-//        HashMap<String, City> citiesMap = new HashMap<String, City>();
-//        for (int i=0;i<cities.size();i++){
-//            City city_obj = new City(cities.get(i));
-//            // TODO: If same city is added in the collection return the timestamp
-//            city_obj.getFeaturesVector();
-//            citiesMap.put(cities.get(i), city_obj);
-//            citiesList.add(city_obj);
-//        }
-
-        //TODO: https://www.twilio.com/blog/working-with-environment-variables-in-java
-        /**
-         * with this link make in windows the environment variable and then just comment out
-         *  the code down below.
-         */
-//        System.out.println("Read Specific Enviornment Variable");
-//        System.out.println("appId Value:- " + System.getenv(City.appId));
-//
-//        System.out.println("\nRead All Variables:-\n");
-//
-//        Map <String, String> map = System.getenv();
-//        for (Map.Entry <String, String> entry: map.entrySet()) {
-//            System.out.println("Variable Name:- " + entry.getKey() + " Value:- " + entry.getValue());
-//        }
     }
 }
