@@ -1,20 +1,17 @@
 import weather.OpenWeatherMap;
 import wikipedia.MediaWiki;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.io.IOException;
 import java.net.URL;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 
 // This class has all the information about one city.
 // A traveller will just pick some features.
 
 public class City {
-    /**
-     *       Cities parameters
+    /*
+     * Cities parameters
      * @param wikiInfo : wiki data
      * @param weatherInfo : weather data
      * @param name : City name
@@ -143,8 +140,9 @@ public class City {
     }
 
     private void calculateFeatureVector() throws IOException {
-         //taking the terms that we want for the city and
-         //setting them to one city
+        //taking the terms that we want for the city and
+        //setting them to one city
+        //the criterions that we want
 
         if (this.featuresVector == null) {
             this.featuresVector = new double[10];
