@@ -7,16 +7,16 @@ import java.util.*;
  */
 
 public interface PerceptronTraveller {
-    /**
+    /*
+     *
      * @param citiesMap
-     * @return arrayList
      * @throws IOException
      */
     ArrayList<String> recommend(HashMap<String,City> citiesMap) throws IOException;
 }
 
 abstract class PerceptronTravellerBase implements PerceptronTraveller{
-    /**
+    /*
      * @param name
      * @param age
      * @param weightsBias : a number between [-1,1]
@@ -55,7 +55,7 @@ abstract class PerceptronTravellerBase implements PerceptronTraveller{
     }
 
     public ArrayList<String> recommend(HashMap<String, City> citiesMap, boolean toUpperCase) throws IOException {
-        /**
+        /*
          * @return recommended cities
          * either to UpperCase or LowerCase
          */
@@ -70,6 +70,7 @@ abstract class PerceptronTravellerBase implements PerceptronTraveller{
     }
 
     private Double[] getScaledCustomFeatures(Double[] customFeatures){
+        //the features normalized from [-1,1] to [0,1]
         Double[] scaledFeatures = new Double[7];
         for (int i=0; i<customFeatures.length; i++){
             scaledFeatures[i] = 2*customFeatures[i] - 1;
@@ -77,8 +78,8 @@ abstract class PerceptronTravellerBase implements PerceptronTraveller{
         return scaledFeatures;
     }
 
-    public ArrayList<String> personalizedRecommend(
-            HashMap<String, City> citiesMap, Double[] customFeatures) throws IOException {
+    public ArrayList<String> personalizedRecommend(HashMap<String, City> citiesMap, Double[] customFeatures) throws IOException {
+        //the features that the traveller puts , and returns the recommended cities from his values
         Double[] scaledFeatures = getScaledCustomFeatures(customFeatures);
         for (int i=0; i<scaledFeatures.length; i++) {
             weightsBias[i] = scaledFeatures[i];
@@ -87,8 +88,7 @@ abstract class PerceptronTravellerBase implements PerceptronTraveller{
         return recommendedCities;
     }
 
-    abstract ArrayList<String> sortRecommendations(
-            ArrayList<String> recommendedCities, HashMap<String, City> cityCollection);
+    abstract ArrayList<String> sortRecommendations(ArrayList<String> recommendedCities, HashMap<String, City> cityCollection);
 
     private double calculateSum(double[] featuresVector) {
         // default method implementation
