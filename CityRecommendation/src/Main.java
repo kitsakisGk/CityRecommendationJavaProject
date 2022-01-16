@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.FileHandler;
@@ -25,13 +27,23 @@ public class Main {
     static CityCollector cc = new CityCollector();
     static Logger logger = Logger.getLogger("CityRecommendationsApp");
     static FileHandler fh;
+    private static String currentDir;
+    static {
+        try {
+            currentDir = new File(".").getCanonicalPath();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void main(String[] args) throws Exception {
 
         try {
 
             // This block configure the logger with handler and formatter
-            fh = new FileHandler("D:/repositories/JavaProjectCityRecommendation");
+            Path filePath = Paths.get(currentDir, "app.log");
+            String logFilePath = filePath.toString();
+            fh = new FileHandler(logFilePath, true);
             logger.addHandler(fh);
             SimpleFormatter formatter = new SimpleFormatter();
             fh.setFormatter(formatter);
@@ -46,7 +58,6 @@ public class Main {
         f.addWindowListener(new WindowAdapter(){
 
             public void windowClosing(WindowEvent e){
-                System.out.println("closing window");
                 try {
                     cc.storeCollection();
                     logger.info("Storing city collection to json file.");
@@ -68,7 +79,6 @@ public class Main {
         tf.setBounds(30,100, 200,30);
         f.add(tf);
 
-
         // Displays the results of adding a new City
         JLabel cityInfoLabel = new JLabel();
         cityInfoLabel.setBounds(430, 100, 300, 40);
@@ -87,18 +97,17 @@ public class Main {
                 String cityInput = tf.getText();
                 try {
                     List<Object> addedCityInfo = cc.addCity(cityInput);
-                    System.out.println("City added");
                     City addedCity = (City) addedCityInfo.get(0);
                     Boolean isNew = (Boolean) addedCityInfo.get(1);
                     if (isNew){
                         cityInfoLabel.setText("City " + addedCity.getName() + " added.");
-                        //tf.setText(null);
                     } else {
                         cityInfoLabel.setText("City has already been added at: " + addedCity.getTimestamp());
-                        //tf.setText(null);
                     }
+                    logger.info("Add city: "+ addedCity.getName());
                 } catch (IOException ex) {
                     ex.printStackTrace();
+                    logger.severe("Error while trying to add a new city: " + ex);
                 }
             }
         });
@@ -142,74 +151,50 @@ public class Main {
         recommend.setVisible(true);
         f.add(recommend);
 
-        // City input
-        JTextField jt = new JTextField();
-        jt.setBounds(30,100, 200,30);
-        f.add(jt);
-
         //add features selections via Spinners
         //left side
-
         JSpinner cafe = new JSpinner();
-        cafe.setModel(new SpinnerNumberModel(5, 0, 10, 1));
+        cafe.setModel(new SpinnerNumberModel(0.5, 0, 1, 0.1));
         cafe.setBounds(800, 200, 45, 20);
         cafe.setVisible(true);
         f.add(cafe);
 
         JSpinner sea = new JSpinner();
-        sea.setModel(new SpinnerNumberModel(5, 0, 10, 1));
+        sea.setModel(new SpinnerNumberModel(0.5, 0, 1, 0.1));
         sea.setBounds(800, 250, 45, 20);
         sea.setVisible(true);
         f.add(sea);
 
         JSpinner museum = new JSpinner();
-        museum.setModel(new SpinnerNumberModel(5, 0, 10, 1));
+        museum.setModel(new SpinnerNumberModel(0.5, 0, 1, 0.1));
         museum.setBounds(800, 300, 45, 20);
         museum.setVisible(true);
         f.add(museum);
 
         JSpinner restaurant = new JSpinner();
-        restaurant.setModel(new SpinnerNumberModel(5, 0, 10, 1));
+        restaurant.setModel(new SpinnerNumberModel(0.5, 0, 1, 0.1));
         restaurant.setBounds(800, 350, 45, 20);
         restaurant.setVisible(true);
         f.add(restaurant);
 
-        JSpinner stadium = new JSpinner();
-        stadium.setModel(new SpinnerNumberModel(5, 0, 10, 1));
-        stadium.setBounds(800, 400, 45, 20);
-        stadium.setVisible(true);
-        f.add(stadium);
-
         //right side
         JSpinner park = new JSpinner();
-        park.setModel(new SpinnerNumberModel(5, 0, 10, 1));
+        park.setModel(new SpinnerNumberModel(0.5, 0, 1, 0.1));
         park.setBounds(1000, 200, 45, 20);
         park.setVisible(true);
         f.add(park);
 
         JSpinner gallery = new JSpinner();
-        gallery.setModel(new SpinnerNumberModel(5, 0, 10, 1));
+        gallery.setModel(new SpinnerNumberModel(0.5, 0, 1, 0.1));
         gallery.setBounds(1000, 250, 45, 20);
         gallery.setVisible(true);
         f.add(gallery);
 
-        JSpinner temperature = new JSpinner();
-        temperature.setModel(new SpinnerNumberModel(5, 0, 10, 1));
-        temperature.setBounds(1000, 300, 45, 20);
-        temperature.setVisible(true);
-        f.add(temperature);
-
-        JSpinner clouds = new JSpinner();
-        clouds.setModel(new SpinnerNumberModel(5, 0, 10, 1));
-        clouds.setBounds(1000, 350, 45, 20);
-        clouds.setVisible(true);
-        f.add(clouds);
-
-        JSpinner geoDist = new JSpinner();
-        geoDist.setModel(new SpinnerNumberModel(5, 0, 10, 1));
-        geoDist.setBounds(1000, 400, 45, 20);
-        geoDist.setVisible(true);
-        f.add(geoDist);
+        JSpinner stadium = new JSpinner();
+        stadium.setModel(new SpinnerNumberModel(0.5, 0, 1, 0.1));
+        stadium.setBounds(1000, 300, 45, 20);
+        stadium.setVisible(true);
+        f.add(stadium);
 
         //Features labels
         //left
@@ -237,12 +222,6 @@ public class Main {
         restaurantLabel.setVisible(true);
         f.add(restaurantLabel);
 
-        JLabel stadiumLabel = new JLabel("Stadium:");
-        stadiumLabel.setBounds(730, 395, 50, 30);
-        stadiumLabel.setForeground(new Color(250,250,250));
-        stadiumLabel.setVisible(true);
-        f.add(stadiumLabel);
-
         //right
         JLabel parkLabel = new JLabel("Park:");
         parkLabel.setBounds(950, 195, 50, 30);
@@ -256,31 +235,26 @@ public class Main {
         galleryLabel.setVisible(true);
         f.add(galleryLabel);
 
-        JLabel temperatureLabel = new JLabel("Temperature:");
-        temperatureLabel.setBounds(903, 295, 80, 30);
-        temperatureLabel.setForeground(new Color(250,250,250));
-        temperatureLabel.setVisible(true);
-        f.add(temperatureLabel);
-
-        JLabel cloudsLabel = new JLabel("Clouds:");
-        cloudsLabel.setBounds(936, 345, 50, 30);
-        cloudsLabel.setForeground(new Color(250,250,250));
-        cloudsLabel.setVisible(true);
-        f.add(cloudsLabel);
-
-        JLabel geoDistLabel = new JLabel("GeodesicDistance:");
-        geoDistLabel.setBounds(875, 395, 110, 30);
-        geoDistLabel.setForeground(new Color(250,250,250));
-        geoDistLabel.setVisible(true);
-        f.add(geoDistLabel);
+        JLabel stadiumLabel = new JLabel("Stadium:");
+        stadiumLabel.setBounds(930, 295, 50, 30);
+        stadiumLabel.setForeground(new Color(250,250,250));
+        stadiumLabel.setVisible(true);
+        f.add(stadiumLabel);
 
         // Checkbox to use custom features
         JCheckBox useCustomFeatures = new JCheckBox("Use custom preferences");
-        useCustomFeatures.setBounds(730, 450, 300, 30);
-//        useCustomFeatures.setBackground(new Color(7, 16, 30));
+        useCustomFeatures.setBounds(710, 390, 300, 30);
         useCustomFeatures.setForeground(new Color(250,250,250));
         useCustomFeatures.setOpaque(false);
         f.add(useCustomFeatures);
+
+        // Place to show the results
+        JLabel jlr = new JLabel();
+        jlr.setBounds(20, 400, 1100, 200);
+        jlr.setFont(new Font("Arial", Font.PLAIN, 16));
+        jlr.setForeground(new Color(250,250,250));
+        jlr.setVisible(true);
+        f.add(jlr);
 
         recommend.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
@@ -298,7 +272,6 @@ public class Main {
                 try {
                     ArrayList<String> recommendedCities;
                     if (useCustomFeatures.isSelected()) {
-                        System.out.println("Checkbox is checked");
                         Double cafeValue = (Double) cafe.getValue();
                         Double seaValue = (Double) sea.getValue();
                         Double museumValue = (Double) museum.getValue();
@@ -311,17 +284,16 @@ public class Main {
                                 stadiumValue, parkValue, galleryValue
                         };
                         recommendedCities = pt.personalizedRecommend(cc.getCityCollection(), customFeatures);
-//                        System.out.println(Arrays.toString(customFeatures));
                     } else {
                         recommendedCities = pt.recommend(cc.getCityCollection());
-//                        System.out.println(sortedCities);
                     }
                     ArrayList<String> sortedCities = pt.sortRecommendations(recommendedCities, cc.getCityCollection());
-                    jt.setText("Our recommendations for " + travellerName + " are: " + String.valueOf(sortedCities));
+                    jlr.setText("Our recommendations for " + travellerName + " are: " + String.valueOf(sortedCities));
+                    logger.info("Recommended cities for user: " + travellerName + " of age: " + travellerAge + " are: " + recommendedCities.toString());
                 } catch (IOException ex) {
                     ex.printStackTrace();
+                    logger.severe("Unable to get city recommendations for user: " + travellerName + " of age: " + travellerAge + ". Error: " + ex);
                 }
-                System.out.println(travellerAge);
             }
         });
 
