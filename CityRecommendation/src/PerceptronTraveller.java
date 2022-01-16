@@ -41,14 +41,6 @@ abstract class PerceptronTravellerBase implements PerceptronTraveller{
         return age;
     }
 
-    public double[] getWeightsBias() {
-        return weightsBias;
-    }
-
-    public void setWeightsBias(double[] weightsBias) {
-        this.weightsBias = weightsBias;
-    }
-
     public ArrayList<String> recommend(HashMap<String, City> citiesMap) throws IOException {
         ArrayList<String> recommendedCities = getCityRecommendations(citiesMap);
         return recommendedCities;
@@ -60,7 +52,7 @@ abstract class PerceptronTravellerBase implements PerceptronTraveller{
          * either to UpperCase or LowerCase
          */
         ArrayList<String> recommendedCities = getCityRecommendations(citiesMap);
-        if (toUpperCase == true) {
+        if (toUpperCase) {
             for (int i=0; i<recommendedCities.size(); i++) {
                 String city = recommendedCities.get(i).toUpperCase(Locale.ROOT);
                 recommendedCities.set(i, city);
