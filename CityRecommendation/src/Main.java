@@ -19,7 +19,7 @@ import javax.swing.*;
  * The main class runs the environment
  * that you can get a preferable city.
  *
- * @author Kitsaros
+ * @author Kitsakis
  * @since 2021-12-10
  */
 public class Main {
@@ -39,8 +39,8 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
         try {
-
-            // This block configure the logger with handler and formatter
+            // This block configures the logger with handler and formatter
+            //storing into logger the latest moves
             Path filePath = Paths.get(currentDir, "app.log");
             String logFilePath = filePath.toString();
             fh = new FileHandler(logFilePath, true);
@@ -56,7 +56,6 @@ public class Main {
 
         JFrame f = new JFrame("City Recommendations");
         f.addWindowListener(new WindowAdapter(){
-
             public void windowClosing(WindowEvent e){
                 try {
                     cc.storeCollection();
@@ -270,6 +269,7 @@ public class Main {
                     pt = new PerceptronElderTraveller(travellerName, travellerAge);
                 }
                 try {
+                    //by clicking the checkbox we use the users recommendations
                     ArrayList<String> recommendedCities;
                     if (useCustomFeatures.isSelected()) {
                         Double cafeValue = (Double) cafe.getValue();
