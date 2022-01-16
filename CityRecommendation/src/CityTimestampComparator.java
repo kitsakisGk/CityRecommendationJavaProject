@@ -4,7 +4,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 
 /**
- * returns the increased timestamp
+ * returns an array of cities that are sorted with increased timestamp
  */
 
 public class CityTimestampComparator implements Comparator<City> {
