@@ -3,6 +3,10 @@ import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 
+/**
+ * returns the increased timestamp
+ */
+
 public class CityTimestampComparator implements Comparator<City> {
 
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
