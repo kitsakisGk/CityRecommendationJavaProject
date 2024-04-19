@@ -24,7 +24,7 @@ Recommending cities based the age and their preferences of each person
 <img src="https://github.com/kitsakisGk/CityRecommendationJavaProject/assets/57558604/469734cf-1229-48de-b2f6-ce1d07de9a39
 " width="700" height="400" />
 
-<img src="https://github.com/kitsakisGk/CityRecommendationJavaProject/assets/57558604/fe863d65-1349-43dc-97de-188a6419a62e)
+<img src="CityRecommendation/CityRecommendation/Add_city.jpg
 " width="700" height="400" />
 
 <img src="https://github.com/kitsakisGk/CityRecommendationJavaProject/assets/57558604/a320d829-5525-4d4a-b36e-e8b8eb814307)
