@@ -1,0 +1,196 @@
+Ιαν 16, 2022 4:38:50 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Vienna
+Ιαν 16, 2022 4:38:52 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Vienna
+Ιαν 16, 2022 4:39:18 Μ.Μ. Main$3 actionPerformed
+INFO:io Recommended cities for user: Grgos of age: 24 are: [Barcelona, Melbourne, Rome, Vienna, Helsinki]
+Ιαν 16, 2022 4:39:36 Μ.Μ. Main$1 windowClosing
+INFO: Storing city collection to json file.
+Ιαν 16, 2022 4:41:26 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Giorgs of age: 23 are: []
+Ιαν 16, 2022 4:41:33 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Giorgs of age: 45 are: []
+Ιαν 16, 2022 4:42:24 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Edinburgh
+Ιαν 16, 2022 4:42:26 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Edinburgh
+Ιαν 16, 2022 4:42:28 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Edinburgh
+Ιαν 16, 2022 4:42:36 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Giorgos of age: 34 are: []
+Ιαν 16, 2022 4:42:39 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Giorgos of age: 56 are: []
+Ιαν 16, 2022 4:42:43 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Giorgos of age: 67 are: []
+Ιαν 16, 2022 4:42:55 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Giorgos of age: 25 are: []
+Ιαν 16, 2022 4:42:56 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Giorgos of age: 25 are: []
+Ιαν 16, 2022 4:42:58 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Giorgos of age: 25 are: [Barcelona, Melbourne, Palermo, Rome, Vienna, Edinburgh, Helsinki]
+Ιαν 16, 2022 4:49:57 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Giorgos of age: 35 are: [Barcelona, Melbourne, Palermo, Rome, Vienna, Helsinki]
+Ιαν 16, 2022 4:50:58 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Nikos of age: 32 are: [Barcelona, Melbourne, Palermo, Rome, Vienna, Helsinki]
+Ιαν 16, 2022 4:52:37 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Nikos of age: 43 are: [Barcelona, Melbourne, Palermo, Rome, Vienna, Helsinki]
+Ιαν 16, 2022 4:53:21 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Nikos of age: 24 are: [Barcelona, Melbourne, Rome, Vienna, Helsinki]
+Ιαν 16, 2022 4:54:36 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Thanasis of age: 22 are: [Barcelona, Melbourne, Rome, Vienna, Helsinki]
+Ιαν 16, 2022 4:55:52 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Thanasis of age: 22 are: [Barcelona, Melbourne, Rome, Vienna, Helsinki]
+Ιαν 16, 2022 4:56:19 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Antonis of age: 23 are: [Barcelona, Melbourne, Rome, Vienna, Helsinki]
+Ιαν 16, 2022 4:56:39 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Antonis of age: 24 are: []
+Ιαν 16, 2022 4:56:48 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Antonis of age: 24 are: []
+Ιαν 16, 2022 4:56:57 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Berlin
+Ιαν 16, 2022 4:56:58 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Berlin
+Ιαν 16, 2022 4:56:58 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Berlin
+Ιαν 16, 2022 4:57:03 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Tokio
+Ιαν 16, 2022 4:57:04 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Tokio
+Ιαν 16, 2022 4:57:06 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Tokio
+Ιαν 16, 2022 4:57:14 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Bali
+Ιαν 16, 2022 4:57:15 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Bali
+Ιαν 16, 2022 4:57:16 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Antonis of age: 24 are: []
+Ιαν 16, 2022 4:57:34 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Antonis of age: 24 are: [Bali]
+Ιαν 16, 2022 4:57:51 Μ.Μ. Main$1 windowClosing
+INFO: Storing city collection to json file.
+Ιαν 16, 2022 6:36:05 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Nikos of age: 45 are: [Barcelona, Berlin, Melbourne, Palermo, Rome, Vienna, Helsinki]
+Ιαν 16, 2022 6:36:12 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Nikos of age: 45 are: []
+Ιαν 16, 2022 6:36:27 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Nikos of age: 45 are: []
+Ιαν 16, 2022 6:36:30 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Nikos of age: 45 are: []
+Ιαν 16, 2022 6:36:37 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Nikos of age: 45 are: []
+Ιαν 16, 2022 6:36:41 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Bali
+Ιαν 16, 2022 6:36:53 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Malawi
+Ιαν 16, 2022 6:36:54 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Malawi
+Ιαν 16, 2022 6:36:56 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Malawi
+Ιαν 16, 2022 6:36:57 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Nikos of age: 45 are: []
+Ιαν 16, 2022 6:37:02 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Nikos of age: 45 are: [Barcelona, Berlin, Melbourne, Palermo, Rome, Malawi, Vienna, Helsinki]
+Ιαν 16, 2022 6:37:05 Μ.Μ. Main$1 windowClosing
+INFO: Storing city collection to json file.
+Ιαν 20, 2022 5:43:22 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: thanasis of age: 20 are: [Bali, Barcelona, Berlin, Melbourne, Rome, Malawi, Vienna, Helsinki]
+Ιαν 20, 2022 5:44:02 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Moscow
+Ιαν 20, 2022 5:44:19 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Jaipur
+Ιαν 20, 2022 5:44:27 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Jaipur
+Ιαν 20, 2022 5:44:44 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: thanasis of age: 20 are: [Bali, Barcelona, Berlin, Moscow, Melbourne, Rome, Malawi, Vienna, Helsinki]
+Ιαν 20, 2022 5:46:09 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: thanasis of age: 20 are: [Berlin, Palermo]
+Ιαν 20, 2022 5:46:36 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: thanasis of age: 20 are: [Bali]
+Ιαν 20, 2022 5:47:10 Μ.Μ. Main$1 windowClosing
+INFO: Storing city collection to json file.
+Ιαν 24, 2022 5:49:41 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Malibu
+Ιαν 24, 2022 5:49:43 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Malibu
+Ιαν 24, 2022 5:49:53 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: giorgos of age: 23 are: [Bali, Barcelona, Berlin, Moscow, Melbourne, Rome, Malawi, Vienna, Helsinki]
+Ιαν 24, 2022 5:50:02 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: giorgos of age: 35 are: [Barcelona, Berlin, Moscow, Melbourne, Palermo, Rome, Malawi, Vienna, Helsinki]
+Ιαν 24, 2022 5:50:08 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: giorgos of age: 56 are: [Barcelona, Berlin, Moscow, Melbourne, Palermo, Rome, Malawi, Vienna, Helsinki]
+Ιαν 24, 2022 5:50:12 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: giorgos of age: 67 are: []
+Ιαν 24, 2022 5:50:19 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: giorgos of age: 27 are: [Barcelona, Berlin, Moscow, Melbourne, Palermo, Rome, Malawi, Vienna, Helsinki]
+Ιαν 24, 2022 5:50:35 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: giorgos of age: 27 are: [Bali]
+Ιαν 24, 2022 5:50:40 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: giorgos of age: 27 are: []
+Ιαν 24, 2022 5:50:42 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Malibu
+Ιαν 24, 2022 5:50:45 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: giorgos of age: 27 are: []
+Ιαν 24, 2022 5:50:51 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: giorgos of age: 27 are: [Bali]
+Ιαν 24, 2022 5:50:52 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: giorgos of age: 27 are: [Bali]
+Ιαν 24, 2022 5:51:14 Μ.Μ. Main$1 windowClosing
+INFO: Storing city collection to json file.
+Ιαν 24, 2022 10:49:41 Μ.Μ. Main$1 windowClosing
+INFO: Storing city collection to json file.
+Ιαν 24, 2022 11:02:29 Μ.Μ. Main$1 windowClosing
+INFO: Storing city collection to json file.
+Ιαν 24, 2022 11:03:34 Μ.Μ. Main$1 windowClosing
+INFO: Storing city collection to json file.
+Ιαν 24, 2022 11:12:48 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Peru
+Ιαν 24, 2022 11:13:07 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Peru
+Ιαν 24, 2022 11:13:18 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Peru
+Ιαν 24, 2022 11:13:22 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Peru
+Ιαν 24, 2022 11:13:22 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Peru
+Ιαν 24, 2022 11:13:23 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Peru
+Ιαν 24, 2022 11:13:23 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Peru
+Ιαν 24, 2022 11:13:23 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Peru
+Ιαν 24, 2022 11:13:39 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Kostas of age: 24 are: [Bali, Barcelona, Berlin, Moscow, Melbourne, Rome, Malawi, Vienna, Helsinki, Peru]
+Ιαν 24, 2022 11:13:53 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Kostas of age: 24 are: []
+Ιαν 24, 2022 11:14:14 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Kostas of age: 24 are: [Bali, Malawi]
+Ιαν 24, 2022 11:14:19 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Kostas of age: 24 are: [Bali, Barcelona, Berlin, Moscow, Melbourne, Rome, Malawi, Vienna, Helsinki, Peru]
+Ιαν 24, 2022 11:14:39 Μ.Μ. Main$1 windowClosing
+INFO: Storing city collection to json file.
+Ιαν 24, 2022 11:39:04 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Kongo
+Ιαν 24, 2022 11:39:09 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Kongo
+Ιαν 24, 2022 11:39:59 Μ.Μ. Main$1 windowClosing
+INFO: Storing city collection to json file.
+Ιαν 27, 2022 1:16:46 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Giorgos of age: 24 are: [Bali, Barcelona, Berlin, Moscow, Melbourne, Rome, Malawi, Vienna, Helsinki, Peru]
+Ιαν 27, 2022 1:16:53 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Giorgos of age: 64 are: []
+Ιαν 27, 2022 1:17:01 Μ.Μ. Main$1 windowClosing
+INFO: Storing city collection to json file.
+Ιαν 27, 2022 1:41:40 Μ.Μ. Main$2 actionPerformed
+INFO: Add city: Berlin
+Ιαν 27, 2022 1:42:05 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Giorgos of age: 24 are: [Bali, Barcelona, Berlin, Moscow, Melbourne, Rome, Malawi, Vienna, Helsinki, Peru]
+Ιαν 27, 2022 1:42:09 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Giorgos of age: 24 are: []
+Ιαν 27, 2022 1:42:20 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Giorgos of age: 24 are: []
+Ιαν 27, 2022 1:42:23 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Giorgos of age: 24 are: []
+Ιαν 27, 2022 1:42:34 Μ.Μ. Main$3 actionPerformed
+INFO: Recommended cities for user: Giorgos of age: 24 are: [Bali, Barcelona, Berlin, Moscow, Melbourne, Rome, Malawi, Vienna, Helsinki, Peru]
+Ιαν 27, 2022 1:44:33 Μ.Μ. Main$1 windowClosing
+INFO: Storing city collection to json file.

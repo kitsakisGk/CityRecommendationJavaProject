@@ -81,7 +81,7 @@ public class Main {
         // Displays the results of adding a new City
         JLabel cityInfoLabel = new JLabel();
         cityInfoLabel.setBounds(430, 100, 300, 40);
-        cityInfoLabel.setForeground(new Color(250,250,250));
+        cityInfoLabel.setForeground(new Color(0,0,0));
         f.add(cityInfoLabel);
         cityInfoLabel.setVisible(true);
 
@@ -114,14 +114,14 @@ public class Main {
         // Traveller info label
         JLabel travellerInfoLabel = new JLabel("Add traveller info");
         travellerInfoLabel.setBounds(30, 200, 300, 30);
-        travellerInfoLabel.setForeground(new Color(250,250,250));
+        travellerInfoLabel.setForeground(new Color(0,0,0));
         travellerInfoLabel.setVisible(true);
         f.add(travellerInfoLabel);
 
         // Traveller name label
         JLabel travellerNameLabel = new JLabel("Name:");
         travellerNameLabel.setBounds(30, 250, 50, 30);
-        travellerNameLabel.setForeground(new Color(250,250,250));
+        travellerNameLabel.setForeground(new Color(0,0,0));
         travellerNameLabel.setVisible(true);
         f.add(travellerNameLabel);
 
@@ -134,7 +134,7 @@ public class Main {
         // Traveller age label
         JLabel travellerAgeLabel = new JLabel("Age:");
         travellerAgeLabel.setBounds(30, 300, 50, 30);
-        travellerAgeLabel.setForeground(new Color(250,250,250));
+        travellerAgeLabel.setForeground(new Color(0,0,0));
         travellerAgeLabel.setVisible(true);
         f.add(travellerAgeLabel);
 
@@ -199,51 +199,51 @@ public class Main {
         //left
         JLabel cafeLabel = new JLabel("Cafe:");
         cafeLabel.setBounds(750, 195, 50, 30);
-        cafeLabel.setForeground(new Color(250,250,250));
+        cafeLabel.setForeground(new Color(0,0,0));
         cafeLabel.setVisible(true);
         f.add(cafeLabel);
 
         JLabel seaLabel = new JLabel("Sea:");
         seaLabel.setBounds(752, 245, 50, 30);
-        seaLabel.setForeground(new Color(250,250,250));
+        seaLabel.setForeground(new Color(0,0,0));
         seaLabel.setVisible(true);
         f.add(seaLabel);
 
         JLabel museumLabel = new JLabel("Museum:");
         museumLabel.setBounds(724, 295, 60, 30);
-        museumLabel.setForeground(new Color(250,250,250));
+        museumLabel.setForeground(new Color(0,0,0));
         museumLabel.setVisible(true);
         f.add(museumLabel);
 
         JLabel restaurantLabel = new JLabel("Restaurant:");
         restaurantLabel.setBounds(710, 345, 80, 30);
-        restaurantLabel.setForeground(new Color(250,250,250));
+        restaurantLabel.setForeground(new Color(0,0,0));
         restaurantLabel.setVisible(true);
         f.add(restaurantLabel);
 
         //right
         JLabel parkLabel = new JLabel("Park:");
         parkLabel.setBounds(950, 195, 50, 30);
-        parkLabel.setForeground(new Color(250,250,250));
+        parkLabel.setForeground(new Color(0,0,0));
         parkLabel.setVisible(true);
         f.add(parkLabel);
 
         JLabel galleryLabel = new JLabel("Gallery:");
         galleryLabel.setBounds(935, 245, 50, 30);
-        galleryLabel.setForeground(new Color(250,250,250));
+        galleryLabel.setForeground(new Color(0,0,0));
         galleryLabel.setVisible(true);
         f.add(galleryLabel);
 
         JLabel stadiumLabel = new JLabel("Stadium:");
         stadiumLabel.setBounds(930, 295, 50, 30);
-        stadiumLabel.setForeground(new Color(250,250,250));
+        stadiumLabel.setForeground(new Color(0,0,0));
         stadiumLabel.setVisible(true);
         f.add(stadiumLabel);
 
         // Checkbox to use custom features
         JCheckBox useCustomFeatures = new JCheckBox("Use custom preferences");
         useCustomFeatures.setBounds(710, 390, 300, 30);
-        useCustomFeatures.setForeground(new Color(250,250,250));
+        useCustomFeatures.setForeground(new Color(0,0,0));
         useCustomFeatures.setOpaque(false);
         f.add(useCustomFeatures);
 
@@ -251,7 +251,7 @@ public class Main {
         JLabel jlr = new JLabel();
         jlr.setBounds(20, 400, 1100, 200);
         jlr.setFont(new Font("Arial", Font.PLAIN, 16));
-        jlr.setForeground(new Color(250,250,250));
+        jlr.setForeground(new Color(0,0,0));
         jlr.setVisible(true);
         f.add(jlr);
 
